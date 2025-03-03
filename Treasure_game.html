@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt</title>
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+        
+        h1 {
+            color: darkgoldenrod;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        
+        .container {
+            margin: auto;
+            margin-top: 20px;
+            width: 1000px;
+            height: 600px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            border: 10px solid goldenrod;
+            border-radius: 15px;
+            background: url(Mountain);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        img {
+            position: absolute;
+            cursor: pointer;
+        }
+        
+        #chest1 {
+            width: 120px;
+            left: 150px;
+            bottom: 250px;
+        }
+        
+        #chest2 {
+            width: 120px;
+            bottom: 80px;
+            right: 90px;
+        }
+        
+        #chest3 {
+            width: 60px;
+            bottom: 60px;
+            left: 600px;
+        }
+        
+        #chest4 {
+            width: 120px;
+            bottom: 300px;
+            left: 300px;
+            bottom: 50px;
+        }
+        
+        #rock {
+            width: 250px;
+            bottom: 220px;
+            left: 80px;
+        }
+        
+        #tree {
+            width: 300px;
+            bottom: 50px;
+            left: 500px;
+        }
+        
+        #bush {
+            width: 200px;
+            bottom: 50px;
+            left: 750px;
+        }
+        
+        #tent {
+            width: 300px;
+            bottom: 180px;
+            right: 160px;
+            bottom: 0;
+            left: 180px;
+        }
+        
+        #score {
+            position: absolute;
+            color: black;
+            font-size: 48px;
+            top: 10px;
+            left: 50px;
+        }
+        </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <h1>Treasure Hunt</h1>
+    <div class="container">
+        <p id='score'>0</p>
+
+        <img src="chest1.png" id='chest1' class='treasure'>
+        <img src='rock.png' id='rock'>
+
+        <img src="chest2.png" id='chest2' class='treasure'>
+        <img src='tree.png' id='tree'>
+
+        <img src="chest3.png" id='chest3' class='treasure'>
+        <img src='bush.png' id='bush'>
+
+        <img src="chest4.png" id='chest4' class='treasure'>
+        <img src='tent.png' id='tent'>
+    </div>
+    <script>
+        var score = 0;
+        
+        function foundTreasure(event) {
+            var treasure = $(event.currentTarget);
+            treasure.fadeOut(250);
+            score++;
+            $("#score").text(score);
+            
+            if (score >= 4) {
+                alert("You Found All The Treasures!");
+            }
+        }
+        $(".treasure").on("click", foundTreasure);
+    </script>
+</body>
+</html>
